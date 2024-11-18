@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container mt-4 bg-transparent">
+  <div class="container shadow mt-5 py-3" style="width:80%;height:100%;background-color:#d5dada;">
+    <h2 class="text-center text-dark my-3"><div class="mx-auto" style="width:270px;"><i>User Register</i></div></h2>
+    <div class="row mx-1 ">
+        <h5 class="text-dark ms-1">Username</h5>
+     <div class="col-sm-12 mb-3 mt-2 " >
+         <input type="text" class="form-control border border-dark" name="u" placeholder="Enter the name">
+     </div>
+        <h5 class="text-dark ms-1">Password</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="password" class="form-control border border-dark" name="p" placeholder="Enter the password">
+     </div>
+        <h5 class="text-dark ms-1">Confirm Password</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="password" class="form-control border border-dark " name="cp" placeholder="Confirm password">
+     </div>
+        <h5 class="text-dark ms-1">First Name</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="text" class="form-control border border-dark" name="f" placeholder="Enter the first name">
+     </div>
+        <h5 class="text-dark ms-1">Last Name</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="text" class="form-control border border-dark" name="l" placeholder="Enter the last name">
+     </div>
+        <h5 class="text-dark ms-1">Email</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="email" class="form-control border border-dark" name="e" placeholder="Enter the email">
+     </div>
+        <h5 class="text-dark ms-1">Phone No</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="number" class="form-control border border-dark" name="n" placeholder="Enter the phone number">
+     </div>
+        <h5 class="text-dark ms-1">Address</h5>
+     <div class="col-sm-12 mb-3 mt-2">
+         <input type="text" class="form-control border border-dark" name="a" placeholder="Enter the address">
+     </div>
+     <div class="col-sm-12 text-dark mt-3">
+         <input type="submit" class="form-control border border-dark btn btn-outline-primary fs-5 fw-bold" value="Register">
+     </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}
+
+
+
+

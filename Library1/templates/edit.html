@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container mt-5 bg-transparent">
+  <div class="container shadow mt-5 py-3" style="width:80%;background-color: rgba(255, 255, 255, 0.1);backdrop-filter: blur(6px);">
+    <h2 class="text-center text-light my-4"><div class="mx-auto" style="width:370px;background-color:#2d363c;"><i>Edit Book Details</i></div></h2>
+    <div class="row mx-1 ">
+        <h6 class="text-light">Title</h6>
+     <div class="col-sm-12 mb-3 " >
+         <input type="text" class="form-control " name="t" value="{{book.title}}" placeholder="Enter the title">
+     </div>
+        <h6 class="text-light">Author</h6>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control " name="a" value="{{book.author}}" placeholder="Enter the author">
+     </div>
+        <h6 class="text-light">Price</h6>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="p" value="{{book.price}}" placeholder="Enter the Price">
+     </div>
+        <h6 class="text-light">Pages</h6>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="pa" value="{{book.pages}}" placeholder="Enter the number of pages">
+     </div>
+        <h6 class="text-light">Language</h6>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="l" value="{{book.language}}" placeholder="Enter the Language">
+     </div>
+        <h6 class="text-light">Cover</h6>
+     <div class="col-sm-12 mb-3">
+         <img src="{{book.cover.url}}" class="mb-1" height="100px" width="50px">
+         <input type="file" class="form-control" name="c" >
+     </div>
+        <h6 class="text-light">pdf</h6>
+        <a href="{{book.pdf.url}}">{{book.pdf}}</a>
+     <div class="col-sm-12 mb-3">
+         <input type="file" class="form-control" name="pd" >
+     </div>
+     <div class="col-sm-12 text-light">
+         <input type="submit" class="form-control btn btn-outline-warning fs-5 fw-bold" value="SUBMIT">
+     </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}
+
+
+
+

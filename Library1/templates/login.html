@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+<div class="container mt-5 bg-transparent">
+  <div class="container shadow border border-1 border-dark  mt-5 py-3" style="width:50%;height:500px;background-color:#d5dada;">
+    <h1 class="text-center text-dark my-4"><div class="mx-auto" style="width:200px;"><bold>Log In</bold></div></h1>
+
+    <div class="row mx-1 ">
+        <h5 class="text-dark mb-2">Username</h5>
+     <div class="col-sm-12 mb-3 " >
+         <input type="text" class="form-control border border-dark" name="u" placeholder="Enter the name">
+     </div>
+        <h5 class="text-dark mb-2">Password</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="password" class="form-control border border-dark" name="p" placeholder="Enter the password">
+     </div>
+
+     <div class="col-sm-12 text-dark mt-4">
+         <input type="submit" class="form-control border border-dark btn btn-outline-primary fs-5 fw-bold" value="login">
+     </div>
+
+        <h6 class="fw-light mt-5" style="text-align:center;">Don't have an account? <a href="{% url 'Users:userregister' %}">Register</a></h6>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}
+
+
+
+

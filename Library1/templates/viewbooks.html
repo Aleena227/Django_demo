@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-5">
+  <div class="container shadow mt-5 py-3" style="width:80%;">
+    <h1 style="text-align:center;color:black;background-color:rgba(255, 255, 255, 0.2);backdrop-filter:blur(10px);"><b><i>Books</i></b></h1>
+      <table class="container-fluid mt-4 table table-success table-striped table-bordered border-transparent justify-content-center  ">
+    <tr style="text-align:center;">
+        <th>COVER</th><th>TITLE</th><th>AUTHOR</th><th>PAGES</th><th>PRICE</th><th>LANGUAGE</th><th>PDF</th>
+        <th>VIEW</th><th>EDIT</th><th>DELETE</th>
+    </tr>
+
+    {% for i in Book %}
+    <tr style="text-align:center;">
+        <td><img class="container-fluid" src="{{i.cover.url}}" height="100px"></td>
+        <td style="vertical-align: middle;">{{i.title}}</td>
+        <td style="vertical-align: middle;">{{i.author}}</td>
+        <td style="vertical-align: middle;">{{i.pages}}</td>
+        <td style="vertical-align: middle;">{{i.price}}</td>
+        <td style="vertical-align: middle;">{{i.language}}</td>
+        <td style="vertical-align: middle;"><a href="{{i.pdf.url}}" class="btn btn-outline-danger">Download</a></td>
+        <td style="vertical-align: middle;"><a href="{% url 'Books:viewdetails' i.id %}" class="btn btn-outline-danger">View</a></td>
+        <td style="vertical-align: middle;"><a href="{% url 'Books:edit' i.id %}" class="btn btn-outline-danger">Edit</a></td>
+        <td style="vertical-align: middle;"><a href="{% url 'Books:delete' i.id %}" class="btn btn-outline-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+  </div>
+</div>
+
+
+<!--
+{% for i in Book %}
+<ul>
+    <li>Title:{{i.title}}</li>
+    <li>Author:{{i.author}}</li>
+    <li>Price:{{i.price}}</li>
+    <br>
+</ul>
+{% endfor %}
+
+-->
+{% endblock %}
+

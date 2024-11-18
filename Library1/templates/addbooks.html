@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container mt-5 ">
+  <div class="container shadow mt-5 py-3" style="width:80%;height:700px;background-color: rgba(255, 255, 255, 0.1);backdrop-filter: blur(6px);">
+    <h2 class="text-center text-light my-4"><div class="mx-auto" style="width:370px;background-color:#2d363c;"><i>Add Book Details</i></div></h2>
+    <div class="row mx-1 ">
+        <h5 class="text-light">Title</h5>
+     <div class="col-sm-12 mb-3 " >
+         <input type="text" class="form-control " name="t" placeholder="Enter the title">
+     </div>
+        <h5 class="text-light">Author</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control " name="a" placeholder="Enter the author">
+     </div>
+        <h5 class="text-light">Price</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="p" placeholder="Enter the Price">
+     </div>
+        <h5 class="text-light">Pages</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="pa" placeholder="Enter the number of pages">
+     </div>
+        <h5 class="text-light">Language</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="l" placeholder="Enter the Language">
+     </div>
+        <h5 class="text-light">Cover</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="file" class="form-control" name="c" >
+     </div>
+        <h5 class="text-light">pdf</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="file" class="form-control" name="pd" >
+     </div>
+     <div class="col-sm-12 text-dark">
+         <input type="submit" class="form-control btn btn-outline-warning fs-5 fw-bold" value="SUBMIT">
+     </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}
+
+
+
+

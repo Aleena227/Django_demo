@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Flexbox container to center the card */
+    .card-container {
+        display: flex; /* Use Flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: calc(100vh - 70px); /* Adjust height based on navbar height */
+        margin-top: 0; /* Remove default top margin */
+    }
+
+    .card {
+        max-width: 540px; /* Set a maximum width for the card */
+    }
+</style>
+
+<!-- Card Container -->
+<div class="card-container">
+    <div class="card mb-3 border border-2 border-dark">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ book.cover.url }}" class="rounded-start m-3" alt="..." height="90%" width="100%" >
+            </div>
+            <div class="col-md-8 lh-lg ps-5">
+                <div class="card-body mt-3">
+                    <h5 class="card-title p-2"><strong>Title</strong> : {{ book.title }}</h5>
+                    <h5 class="card-title p-2"><strong>Author</strong> : {{ book.author }}</h5>
+                    <h5 class="card-title p-2"><strong>Language</strong> : {{ book.language }}</h5>
+                    <h5 class="card-title p-2"><strong>Price</strong> : {{ book.price }}</h5>
+                    <a href="{{ book.pdf.url }}" class="ms-2 mt-3 btn btn-outline-danger ">DOWNLOAD</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
