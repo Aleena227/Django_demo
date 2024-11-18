@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="background-color:#f8e8ed;">
+<nav class="navbar navbar-light" style="background-color:#82013d;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light">ONLINE MOVIE STORE</a>
+    <form class="d-flex">
+         <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{% url 'addmovie' %}">ADD MOVIE</a>
+     </button>
+    </form>
+  </div>
+</nav>
+
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base1.html' %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container m-5">
+  <div class="container border border-1 shadow mx-auto py-3" style="width:80%;">
+    <h1 class="text-center text-dark my-4">EDIT MOVIE DETAILS</h1>
+    <div class="row mx-1 ">
+        <h6 class="text-dark">Title</h6>
+     <div class="col-sm-12 mb-3" >
+         <input type="text" class="form-control" name="t" value="{{Movie.title}}" placeholder="Enter the title">
+     </div>
+        <h6 class="text-dark">Description</h6>
+     <div class="col-sm-12 mb-3">
+         <textarea class="form-control" rows="3" name="d" placeholder="Write your description">{{Movie.description}}</textarea>
+     </div>
+        <h6 class="text-dark">Language</h6>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="l" value="{{Movie.language}}" placeholder="Enter the Language">
+     </div>
+        <h6 class="text-dark">Year</h6>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="y" value="{{Movie.year}}" placeholder="Enter the year">
+     </div>
+        <h6 class="text-dark">Image</h6>
+     <div class="col-sm-12 mb-3">
+        <img src="{{Movie.image.url}}" height="100px" width="70px">
+        <input class="form-control" type="file" name="i" >
+     </div>
+     <div class="col-sm-12 text-dark ">
+         <input type="submit" class="form-control btn btn-secondary" value="UPDATE">
+     </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}

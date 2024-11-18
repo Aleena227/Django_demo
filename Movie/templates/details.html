@@ -1,0 +1,41 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Flexbox container to center the card */
+    .card-container {
+        display: flex; /* Use Flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: calc(100vh - 70px); /* Adjust height based on navbar height */
+        margin-top: 0; /* Remove default top margin */
+    }
+
+    .card {
+        max-width: 540px; /* Set a maximum width for the card */
+    }
+</style>
+
+<!-- Card Container -->
+<div class="card-container">
+    <div class="card mb-3 border border-2 border-dark">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ Movie.image.url }}" class="rounded-start m-3" alt="..." height="90%" width="100%">
+            </div>
+            <div class="col-md-8 lh-lg ps-5">
+                <div class="card-body mt-3">
+                    <h5 class="card-title"><strong>Title</strong> : {{ Movie.title }}</h5><br>
+                    <h5 class="card-title"><strong>Description</strong> : {{ Movie.description }}</h5><br>
+                    <h5 class="card-title"><strong>Language</strong> : {{ Movie.language }}</h5><br>
+                    <h5 class="card-title"><strong>Year</strong> : {{ Movie.year }}</h5>
+                    <a href="{% url 'edit' Movie.id %}" class="btn btn-outline-danger mt-4">EDIT</a>
+                    <a href="{% url 'delete' Movie.id %}" class="btn btn-outline-danger ms-3 mt-4 ">DELETE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
