@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body style="background-color:#F1F1F1;">
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container mt-4 bg-transparent">
+  <div class="container shadow  mt-5 py-3 pb-5 bg-light" style="width:80%;height:515px;">
+    <h2 class="text-center text-warning my-3"><div class="mx-auto" style="width:270px;"><i>Billing Details</i></div></h2>
+    <div class="row mx-1 ">
+        <h5 style="text-color:dark;" class="p-3"><b>Address</b></h5>
+     <div class="col-sm-12 mb-2" >
+         <input type="text" class="form-control border border-dark" name="a" placeholder="Enter the address">
+     </div>
+        <h5 style="text-color:dark;" class="p-3"><b>Phone Number</b></h5>
+     <div class="col-sm-12 mb-2 ">
+         <input type="text" class="form-control border border-dark" name="p" placeholder="Enter the phone number">
+     </div>
+        <h5 style="text-color:dark;" class="p-3"><b>Pincode</b></h5>
+     <div class="col-sm-12 mb-2 ">
+         <input type="text" class="form-control border border-dark" name="pi" placeholder="Enter the pincode">
+     </div>
+     <div class="col-sm-12 text-dark mt-4 mb-4">
+         <input type="submit" class="form-control border border-dark btn btn-warning fs-5 fw-bold mb-3" value="Submit">
+     </div>
+    </div>
+  </div>
+</div>
+</form>
+</body>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .custom-width {
+        width: 215px; /* Set your desired width */
+    }
+</style>
+<div class="width=100%">
+ <div class=" shadow mt-5 py-3 mx-auto" style="width:95%;">
+      <h2 class="text-warning mt-4" style="text-align:center;background-color:rgba(255, 255, 255, 0.2);backdrop-filter:blur(10px);"><b>SHOPPING CART</b></h2>
+      <div class="row">
+          <div class="col-7">
+      <table class="container-fluid m-5 table  table-warning table-striped table-bordered border-transparent justify-content-center  ">
+    <tr style="text-align:center;">
+        <th colspan="5" ><h3 class="text-dark" ><b>Cart Items</b></h3></th>
+    </tr>
+    {% for i in cart %}
+    <tr style="text-align:center;">
+        <td style="vertical-align: middle;"><img class="container-fluid" src="{{i.product.image.url}}" height="130px"></td>
+        <td style="vertical-align: middle;">Product : {{i.product.name}}</td>
+        <td style="vertical-align: middle;">Quantity : {{i.quantity}}<br>Unit Price :<br>Rs.{{i.product.price}}</td>
+        <td style="vertical-align: middle;">Subtotal : Rs.{{i.subtotal}}</td>
+        {% if i.product.stock > 0 %}
+        <td style="vertical-align: middle;">
+            <a href="{% url 'cart:addtocart' i.product.id %}" class="p-2"><i class="fa fa-plus-circle text-dark fs-4" aria-hidden="true"></i></a>
+            <a href="{% url 'cart:cartremove' i.product.id %}" class="p-2"><i class="fa fa-minus-circle text-dark fs-4" aria-hidden="true"></i></a>
+            <a href="{% url 'cart:cartdelete' i.product.id %}" class="p-2" ><i class="fa fa-trash text-dark fs-4" aria-hidden="true"></i></a></td>
+        {% else %}
+        <td style="vertical-align: middle;">
+        <a href="{% url 'cart:cartremove' i.product.id %}"><i class="fa fa-minus-circle text-dark fs-4" aria-hidden="true"></i></a>
+        <a href="{% url 'cart:cartdelete' i.product.id %}" ><i class="fa fa-trash text-dark fs-4" aria-hidden="true"></i></a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+          <div class="col-4">
+              <table class="container-fluid m-5  table table-warning table-striped table-bordered border-transparent justify-content-center  ">
+    <tr style="text-align:center;">
+        <th colspan="4" ><h3 class="text-dark"><b>Check Out</b></h3></th>
+    </tr>
+                  <tr style="text-align:center;">
+                      <td colspan="2">Total : {{total}}</td>
+                  </tr>
+                  <tr>
+                      <td colspan="2" style="background-color: white;" class="border   border-light "></td>
+                  </tr>
+
+                  <tr>
+                      <td><a href="{% url 'cart:orderform' %}" class="btn btn-warning  custom-width">Place Order</a></td>
+                      <td><a href="" class="btn btn-warning  custom-width">Continue Shopping</a></td>
+                  </tr>
+</table>
+          </div>
+
+</div>
+  </div>
+
+</div>
+
+{% endblock %}
+

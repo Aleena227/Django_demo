@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body style="background-color:#F1F1F1;">
+<div class="container mt-5 p-5 bg-light w-50  border-transparent" style="display: flex; justify-content: center; align-items: center; ">
+
+    {% if status == True %}
+    <h3><b>Payment  Succesful</b></h3>
+    {% else %}
+    <h3><b>Payment  Failed...Try again later</b></h3>
+    {% endif %}
+
+</div>
+
+
+</body>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body style="background-color:#F1F1F1;">
+<form method="POST">
+    {% csrf_token %}
+<div class="container mt-5 bg-transparent">
+  <div class="container bg-light shadow border border-1 border-transparent  mt-5 py-3" style="width:55%;height:530px;">
+    <h2 class="text-center text-warning my-4"><div class="mx-auto" style="width:200px;"><bold>Login</bold></div></h2>
+
+    <div class="row mx-1 ">
+        <h5 style="text-dark" class="p-3"><b>Username</b></h5>
+     <div class="col-sm-12 mb-2 " >
+         <input type="text" class="form-control border border-dark" name="u" placeholder="Enter the name">
+     </div>
+        <h5 style="text-dark" class="p-3"><b>Password</b></h5>
+     <div class="col-sm-12 mb-4">
+         <input type="password" class="form-control border border-dark" name="p" placeholder="Enter the password">
+     </div>
+
+     <div class="col-sm-12 text-dark mt-4">
+         <input type="submit" class="form-control border border-dark btn btn-warning fs-5 fw-bold" value="login">
+     </div>
+
+        <h6 class="fw-light mt-5 mx-auto" style="text-align:center;">Don't have an account? <a class="text-warning" href="{% url 'shop:register' %}">Register</a></h6>
+    </div>
+  </div>
+</div>
+</form>
+</body>
+{% endblock %}
+
+
+
+

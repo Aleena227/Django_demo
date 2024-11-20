@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Hero Section Begin -->
+    <section class="hero-section" >
+        <div class="hero-items owl-carousel" >
+            <div  class="single-hero-items set-bg" data-setbg="{% static 'img/hero-1.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span>Bag,kids</span>
+                            <h1>Black friday</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore</p>
+                            <a href="#" class="primary-btn">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="off-card">
+                        <h2>Sale <span>50%</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="{% static 'img/hero-2.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span>Bag,kids</span>
+                            <h1>Black friday</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore</p>
+                            <a href="#" class="primary-btn">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="off-card">
+                        <h2>Sale <span>50%</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+<div class="container mt-5 " style="margin-bottom:1px;">
+    <h2 class="text-center">Our Collections</h2>
+    <p class="mt-5" style="text-align:justify;line-height:2;font-size:20px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+
+<div class="banner-section spad  ">
+        <div class="container-fluid ">
+            <div class="row d-flex align-items-center justify-content-center">
+                {% for i in cat %}
+                <div class="col-lg-3 border border-transparent shadow-lg p-3 m-4  mb-2 bg-body rounded">
+                    <div class="single-banner">
+                        <img  src="{{i.image.url}}" height="250px" width="70%" alt="">
+                    </div>
+
+                    <div class="card-body mx-auto " >
+                          <h2 class="card-title text-center"><b>{{i.name}}</b></h2>
+                          <div class="text-center "><a href="{% url 'shop:products' i.id %}" class="btn btn-danger mx-auto ms-2" >PRODUCTS</a></div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Banner Section End -->
+{% endblock %}
