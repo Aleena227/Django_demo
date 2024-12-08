@@ -1,59 +1,56 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<body style="background-color: #F5F5F5;">
 
-<div class="width=100%">
- <div class=" shadow mt-5 py-3 mx-auto" style="width:95%;">
-      <h2 class="text-warning mt-4" style="text-align:center;background-color:rgba(255, 255, 255, 0.2);backdrop-filter:blur(10px);"><b>SHOPPING CART</b></h2>
-      <div class="row">
-          <div class="col-7">
-      <table class="container-fluid m-5 table  table-warning table-striped table-bordered border-transparent justify-content-center  ">
-    <tr style="text-align:center;">
-        <th colspan="5" ><h3 class="text-dark" ><b>Cart Items</b></h3></th>
-    </tr>
-    {% for i in cart %}
-    <tr style="text-align:center;">
-        <td style="vertical-align: middle;"><img class="container-fluid" src="{{i.product.image.url}}" height="130px"></td>
-        <td style="vertical-align: middle;">Product : {{i.product.name}}</td>
-        <td style="vertical-align: middle;">Quantity : {{i.quantity}}<br>Unit Price :<br>Rs.{{i.product.price}}</td>
-        <td style="vertical-align: middle;">Subtotal : Rs.{{i.subtotal}}</td>
-        {% if i.product.stock > 0 %}
-        <td style="vertical-align: middle;">
-            <a href="{% url 'cart:addtocart' i.product.id %}" class="p-2"><i class="fa fa-plus-circle text-dark fs-4" aria-hidden="true"></i></a>
-            <a href="{% url 'cart:cartremove' i.product.id %}" class="p-2"><i class="fa fa-minus-circle text-dark fs-4" aria-hidden="true"></i></a>
-            <a href="{% url 'cart:cartdelete' i.product.id %}" class="p-2" ><i class="fa fa-trash text-dark fs-4" aria-hidden="true"></i></a></td>
-        {% else %}
-        <td style="vertical-align: middle;">
-        <a href="{% url 'cart:cartremove' i.product.id %}"><i class="fa fa-minus-circle text-dark fs-4" aria-hidden="true"></i></a>
-        <a href="{% url 'cart:cartdelete' i.product.id %}" ><i class="fa fa-trash text-dark fs-4" aria-hidden="true"></i></a></td>
-        {% endif %}
-    </tr>
-    {% endfor %}
-</table>
-</div>
-          <div class="col-4">
-              <table class="container-fluid m-5  table table-warning table-striped table-bordered border-transparent justify-content-center  ">
-    <tr style="text-align:center;">
-        <th colspan="4" ><h3 class="text-dark"><b>Check Out</b></h3></th>
-    </tr>
-                  <tr style="text-align:center;">
-                      <td colspan="2">Total : {{total}}</td>
-                  </tr>
-                  <tr>
-                      <td colspan="2" style="background-color: white;" class="border   border-light "></td>
-                  </tr>
+    <!-- Products Start -->
+    <div class="container-fluid pt-1 pb-3">
+        <div class="row px-xl-5 d-flex align-items-center justify-content-center">
 
-                  <tr>
-                      <td><a href="{% url 'cart:orderform' %}" class="btn btn-warning  custom-width">Place Order</a></td>
-                      <td><a href="" class="btn btn-warning  custom-width">Continue Shopping</a></td>
-                  </tr>
-</table>
-          </div>
+            {% if wishlist %}
+                {% for i in wishlist %}
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1 bg-light shadow-lg border border-transparent p-4 m-5 mb-5 bg-body rounded position-relative">
+                    <div class="product-item bg-light mb-1">
+                        <div class="single-banner">
+                            <img src="{{i.product.image.url}}" height="300px" width="70%" alt="">
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href=""><h4 class="text-warning"><b>{{i.product.name}}</b></h4></a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <h6>Rs. {{i.product.price}}</h6>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                {% if i.product.available == True %}
+                                <h6>Available</h6>
+                                {% else %}
+                                <h6>Not Available</h6>
+                                {% endif %}
+                            </div>
 
-</div>
-  </div>
+                            <!-- Remove Button at the top-right corner (No red circle) -->
+                            <a href="{% url 'cart:wishlistremove' i.product.id %}" class="btn btn-link position-absolute" style="top: 10px; right: 10px; font-size: 20px; color: #d9534f; padding: 0; z-index: 10;">
+                                <i class="fa fa-times" style="color:black;"></i>
+                            </a>
 
-</div>
+                            <!-- Details Button -->
+                            <div class="text-center mt-2">
+                                <a href="{% url 'shop:details' i.product.id %}" class="btn btn-warning mx-auto mt-2">Details</a>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- If Wishlist is empty -->
+                <div class="col-12 text-center m-5">
+                    <h4>Your wishlist is empty!</h4>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <!-- Products End -->
+
+</body>
 {% endblock %}
-

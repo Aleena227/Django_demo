@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 70px);
+        margin-top: 0;
+    }
+
+    .card {
+        max-width: 540px;
+    }
+</style>
+
+<!-- Card Container -->
+<div class="card-container " >
+    <div class="card mb-3 border border-2 border-dark" style="width:80%;background-color:#f8e8ed;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ employee.image.url }}" class="rounded-start m-3" alt="..." height="90%" width="200px" >
+            </div>
+            <div class="col-md-8 lh-lg ps-5">
+                <div class="card-body mt-3">
+                    <h5 class="card-title p-2"><strong>Employee Id</strong> : {{ employee.empid}}</h5>
+                    <h5 class="card-title p-2"><strong>Name</strong> : {{ employee.name }}</h5>
+                    <h5 class="card-title p-2"><strong>Age</strong> : {{ employee.age }}</h5>
+                    <h5 class="card-title p-2"><strong>Place</strong> : {{ employee.gender }}</h5>
+                    <h5 class="card-title p-2"><strong>Gender</strong> : {{ employee.place }}</h5>
+                    <h5 class="card-title p-2"><strong>Designation</strong> : {{ employee.designation }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,38 +1,37 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 <body style="background-color:#F1F1F1;">
 
-{% for i in orders %}
-<div class="card  mb-1 mt-5 rounded mx-auto d-block  p-3 mb-5 bg-body rounded" style="max-width: 50%;height:50%">
-  <div class="row g-0">
-    <div class="col-md-5 ">
-      <img src="{{i.product.image.url}}" width="270px" height="330px" alt="...">
-    </div>
-    <div class="col-md-7">
-      <div class="card-body">
-        <div class="container mt-2 " style="margin-bottom:100px;">
-    <h5 class=" text-warning"><b>Product Name : {{i.product.name}}</b></h5>
-              <h6 class=" mt-5   text-secondary"><i>Order Total : {{i.product.price}}</i></h6>
-              <h6 class=" mt-3   text-secondary"><i>Quantity : {{i.no_of_items}}</i></h6>
-              <h6 class="mt-3   text-secondary"><i>Ordered on : {{i.ordered_date}}</i></h6>
-              <h6 class="mt-3   text-secondary"><i>Order Id: {{i.order_id}}</i></h6>
-              <h6 class="mt-3   text-danger"><i>Delivery status: {{i.delivery_status}}</i></h6>
-               </div>
-
+{% if orders %}
+    {% for i in orders %}
+    <div class="card mb-1 mt-5 rounded mx-auto d-block p-3 mb-5 bg-body rounded" style="max-width: 50%;height:50%">
+      <div class="row g-0">
+        <div class="col-md-5">
+          <img src="{{i.product.image.url}}" width="270px" height="330px" alt="...">
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <div class="container mt-2" style="margin-bottom:100px;">
+              <h5 class="text-warning"><b>Product Name: {{i.product.name}}</b></h5>
+              <h6 class="mt-5 text-secondary"><i>Order Total: {{i.product.price}}</i></h6>
+              <h6 class="mt-3 text-secondary"><i>Quantity: {{i.no_of_items}}</i></h6>
+              <h6 class="mt-3 text-secondary"><i>Ordered on: {{i.ordered_date}}</i></h6>
+              <h6 class="mt-3 text-secondary"><i>Order Id: {{i.order_id}}</i></h6>
+              <h6 class="mt-3 text-danger"><i>Delivery status: {{i.delivery_status}}</i></h6>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-{% endfor %}
-
+    {% endfor %}
+{% else %}
+    <!-- If no orders -->
+    <div class="container mt-5 text-center">
+        <h4>You haven't placed any orders yet</h4>
+    </div>
+{% endif %}
 
 </body>
 {% endblock %}
-
-
-
-

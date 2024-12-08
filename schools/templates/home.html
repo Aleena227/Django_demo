@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="card-container">
+    <div class="card shadow" style="width: 40rem;">
+        <div class="container text-center">
+            <h1 class="" style="font-size:70px;color:#f3702a;"><b><i>Welcome To School</i></b></h1>
+            {% if user.is_authenticated %}
+             <h5 class="" style="font-size:15px;color:#f3702a;">Logged in as {{user.username}}</h5>
+            {% else %}
+             <h5 class="" style="font-size:15px;color:#f3702a;">Browsing as Guest User</h5>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -87,8 +87,8 @@
                         <ul class="nav-right">
 
                             <li>
-                                <a href="{% url 'cart:cartview' %}">
-                                    <i class="fa fa-heart fs-1 text-warning" aria-hidden="true"></i><sup class="mx-1 text-warning fs-3"><b>{{c}}</b></sup>
+                                <a href="{% url 'cart:wishlistview' %}">
+                                    <i class="fa fa-heart fs-1 text-warning" aria-hidden="true"></i><sup class="mx-1 text-warning fs-3"><b>{{b}}</b></sup>
                                 </a>
                             </li>
                             <li>
@@ -115,7 +115,7 @@
 
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="#">All Categories</a>
+                        <li><a href="{% url 'shop:categories' %}">All Categories</a>
                             <ul class="dropdown">
                                 {% for i in links %}
                                     <li><a href="{% url 'shop:products' i.id %}">{{i.name}}</a></li>
@@ -127,7 +127,6 @@
                         {% if user.is_superuser == True %}
                         <li ><a href="{% url 'shop:addcat' %}">Add Categories</a></li>
                         <li ><a href="{% url 'shop:addpro' %}">Add Products</a></li>
-                        <li ><a href="{% url 'cart:orderview' %}">Your Orders</a></li>
                         {% else %}
                         <li ><a href="{% url 'cart:orderview' %}">Your Orders</a></li>
                         {% endif %}

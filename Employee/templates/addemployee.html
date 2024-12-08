@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container mt-5 ">
+  <div class="container shadow mt-5 py-3" style="width:80%;height:760px;background-color:#f8e8ed;">
+    <h2 class="text-center my-4" style="text-color:#82013d;"><i>Add Employee Details</i></h2>
+    <div class="row mx-1 ">
+        <h5 class="text-dark ms-1">Employee Id</h5>
+     <div class="col-sm-12 mb-3 " >
+         <input type="text" class="form-control " name="e" placeholder="Enter the id">
+     </div>
+        <h5 class="text-dark ms-1">Name</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control " name="n" placeholder="Enter the name">
+     </div>
+        <h5 class="text-dark ms-1">Age</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="a" placeholder="Enter the age">
+     </div>
+        <h5 class="text-dark ms-1">Gender</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="g" placeholder="Enter the gender">
+     </div>
+        <h5 class="text-dark ms-1">Place</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="p" placeholder="Enter the place">
+     </div>
+        <h5 class="text-dark ms-1">Designation</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="text" class="form-control" name="d" placeholder="Enter the designation">
+     </div>
+        <h5 class="text-dark ms-1">Image</h5>
+     <div class="col-sm-12 mb-3">
+         <input type="file" class="form-control" name="i" >
+     </div>
+     <div class="col-sm-12 text-dark">
+         <input type="submit" class="form-control btn btn-outline-danger fs-5 fw-bold" value="SUBMIT">
+     </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}
+
+
+
+

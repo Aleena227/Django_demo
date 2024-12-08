@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 import razorpay
 from django.views.decorators.csrf import csrf_exempt
 
+from cart.models import Wishlist
+
+
 @login_required
 def addtocart(request,i):
     p=Product.objects.get(id=i)
@@ -153,49 +156,44 @@ def orderview(request):
     return render(request,'orderview.html',context)
 
 @login_required
-def addtowishlist(request,i):
-    p=Product.objects.get(id=i)
-    u=request.user
+def addtowishlist(request, i):
+    """
+    Add a product to the wishlist of the logged-in user.
+    """
+    p = Product.objects.get(id=i)
+    u = request.user
     try:
-        c=Cart.objects.get(product=p,user=u)
-        if(p.stock>0):
-            c.quantity += 1
-            c.save()
-            p.stock -= 1
-            p.save()
-    except:
-        if(p.stock>0):
-            c = Cart.objects.create(product=p, user=u, quantity=1)
-            c.save()
-            p.stock -= 1
-            p.save()
-    return redirect('cart:cartview')
+        # Check if the product is already in the wishlist
+        w = Wishlist.objects.get(product=p, user=u)
+    except Wishlist.DoesNotExist:
+        # If not, add the product to the wishlist
+        w = Wishlist.objects.create(product=p, user=u)
+        w.save()
+    return redirect('cart:wishlistview')
+
 
 @login_required
-def wishlistremove(request,i):
-    p=Product.objects.get(id=i)
-    u=request.user
+def wishlistremove(request, i):
+    """
+    Remove a product from the wishlist of the logged-in user.
+    """
+    p = Product.objects.get(id=i)
+    u = request.user
     try:
-        c=Cart.objects.get(product=p,user=u)
-        if(c.quantity>1):
-            c.quantity -= 1
-            c.save()
-            p.stock += 1
-            p.save()
-        else:
-            c.delete()
-            p.stock+=1
-            p.save()
-    except:
+        # Find the product in the wishlist and remove it
+        w = Wishlist.objects.get(product=p, user=u)
+        w.delete()
+    except Wishlist.DoesNotExist:
         pass
-    return redirect('cart:cartview')
+    return redirect('cart:wishlistview')
 
 
 @login_required
 def wishlistview(request):
-    u=request.user
-    c = Cart.objects.filter(user=u)
-    context={'cart':c}
-    return render(request,'wishlistview.html',context)
-
-
+    """
+    View all items in the wishlist for the logged-in user.
+    """
+    u = request.user
+    w = Wishlist.objects.filter(user=u)
+    context = {'wishlist': w}
+    return render(request, 'wishlistview.html', context)

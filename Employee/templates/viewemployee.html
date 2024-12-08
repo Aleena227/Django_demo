@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-5">
+  <div class="container shadow mt-5 py-3" style="width:80%;">
+    <h3 style="text-align:center;color:black;"><b><i>Employee Details</i></b></h3>
+      <table class="container-fluid mt-4 table table-light table-striped table-bordered border-transparent justify-content-center ">
+    <tr style="text-align:center;">
+        <th>IMAGE</th><th>EMPLOYEE ID</th><th>NAME</th><th>AGE</th><th>GENDER</th><th>PLACE</th><th>DESIGNATION</th>
+        <th>VIEW</th><th>EDIT</th><th>DELETE</th>
+    </tr>
+
+    {% for i in employee %}
+    <tr style="text-align:center;">
+        <td><img class="container-fluid" src="{{i.image.url}}" height="130px"></td>
+        <td style="vertical-align: middle;">{{i.empid}}</td>
+        <td style="vertical-align: middle;">{{i.name}}</td>
+        <td style="vertical-align: middle;">{{i.age}}</td>
+        <td style="vertical-align: middle;">{{i.gender}}</td>
+        <td style="vertical-align: middle;">{{i.place}}</td>
+        <td style="vertical-align: middle;">{{i.designation}}</td>
+        <td style="vertical-align: middle;"><a href="{% url 'details' i.id %}" class="btn btn-outline-danger">View</a></td>
+        <td style="vertical-align: middle;"><a href="{% url 'editemployee' i.id %}" class="btn btn-outline-danger">Edit</a></td>
+        <td style="vertical-align: middle;"><a href="{% url 'delete' i.id %}" class="btn btn-outline-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+  </div>
+</div>
+
+
+{% endblock %}
+

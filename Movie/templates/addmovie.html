@@ -4,9 +4,9 @@
 {% block content %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-<div class="container m-5">
-  <div class="container border border-1 shadow mx-auto py-3" style="width:80%;">
-    <h1 class="text-center text-dark my-4">ADD MOVIE DETAILS</h1>
+<div class="container mt-5 ">
+  <div class="container shadow mt-5 py-3" style="width:80%;height:600px;background-color: rgba(255, 255, 255, 0.1);backdrop-filter: blur(6px);">
+    <h2 class="text-center text-dark my-4"><i>Add Movie Details</i></h2>
     <div class="row mx-1 ">
         <h6 class="text-dark">Title</h6>
      <div class="col-sm-12 mb-3" >
@@ -29,7 +29,7 @@
         <input class="form-control" type="file" name="i" >
      </div>
      <div class="col-sm-12 text-dark ">
-         <input type="submit" class="form-control btn btn-secondary" value="ADD">
+         <input type="submit" class="form-control btn btn-danger" value="ADD">
      </div>
     </div>
   </div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+
+        .navbar {
+            padding: 20px 15px;
+        }
+
+
+        .navbar-nav .nav-link {
+            background-color: transparent !important;
+            padding: 0.5rem 1rem;
+        }
+
+
+        .navbar-toggler {
+            background-color: #C291A4;
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-color: transparent !important;
+        }
+
+
+        .navbar-nav .nav-link.active {
+            background-color: transparent !important;
+        }
+
+
+        .nav-item {
+            border: none;
+            background: none;
+        }
+    </style>
+</head>
+<body style="background-color:white;background-image: url('{% static 'images/employee3.jpg' %}'); background-size: cover; background-position: center;background-repeat: no-repeat;background-attachment: fixed;height: 100vh;">
+
+<nav class="navbar navbar-expand-lg" style="background-color:#C291A4;">
+  <div class="container-fluid">
+   <h1 class="navbar-brand fs-3 text-light"><b>EMPLOYEE</b></h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-bold fs-5">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="{% url 'home' %}"><i>Home</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'viewemployee' %}"><i>View</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'addemployee' %}"><i>Add</i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+Welcome to library
+{% endblock %}
+
+</body>
+</html>

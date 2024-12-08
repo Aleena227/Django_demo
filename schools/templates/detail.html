@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center " style="height: 100vh;">
+    <div class="card shadow-lg border-0 bg-light" style="width: 65%; max-width: 400px; padding: 0;">
+        <div class="card-header bg-light text-center py-3">
+            <h3 style="color: #f69d6e;" class="m-0"><b>School Details</b></h3>
+        </div>
+        <div class="card-body d-flex flex-column justify-content-center align-items-center p-3" style="min-height: 200px;">
+                <div class="mb-2">
+                    <table>
+        <ul class="m-1">
+            <li class="mt-2"><h5>School Name:{{school.name}}</h5></li>
+            <li class="mt-2" ><h5>Principal Name:{{school.principal}}</h5></li>
+            <li class="mt-2"><h5>Location:{{school.location}}</h5></li>
+            <li class="mt-2"><h5>Students </h5><ul>
+            {% for i in school.students.all %}
+        <li>Name : {{i.name}},  Age : {{i.age}} </li>
+        {% endfor %}
+           </ul>
+            </ul>
+
+    </table>
+                </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

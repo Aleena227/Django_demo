@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+    .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 70px);
+    }
+    body{
+    background-image: url('{% static 'images/employee3.jpg' %}');
+    }
+
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 15px;
+        backdrop-filter: blur(3px);
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-light {
+        color: #fff;
+    }
+</style>
+
+<!-- Card Container -->
+<div class="card-container">
+    <div class="card shadow" style="width: 40rem;">
+        <div class="container text-center">
+            <h1 class="" style="font-size:70px;color:#C291A4;"><b><i>Welcome </i></b></h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
